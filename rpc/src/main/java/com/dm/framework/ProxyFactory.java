@@ -2,7 +2,7 @@ package com.dm.framework;
 
 import com.dm.framework.entity.Invocation;
 import com.dm.framework.entity.URL;
-import com.dm.producer.HelloService;
+import com.dm.api.HelloService;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
