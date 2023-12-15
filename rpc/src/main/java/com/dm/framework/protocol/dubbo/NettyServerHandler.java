@@ -4,6 +4,7 @@ import com.dm.framework.entity.Invocation;
 import com.dm.framework.register.LocalRegister;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 
@@ -13,6 +14,7 @@ import java.lang.reflect.Method;
  * @author dm
  * @date 2023/12/15
  */
+@Slf4j
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     /**
@@ -31,7 +33,6 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         Method method = implClass.getMethod(invocation.getMethodName(), invocation.getParamTypes());
         Object result = method.invoke(implClass.newInstance(), invocation.getParams());
 
-        System.out.println("Netty-------------" + result.toString());
         ctx.writeAndFlush("Netty:" + result);
     }
 }
