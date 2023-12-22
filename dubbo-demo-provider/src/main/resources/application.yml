@@ -5,9 +5,14 @@ dubbo:
   application:
     name: dubbo-demo-provider
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://localhost:2181?timeout=20000
   scan:
     base-packages: com.dm.dubbo.service
+  config-center:
+    config-file: demo-provider
+    address: zookeeper://localhost:2181?timeout=20000
+    app-config-file: app-demo-provider
+    highest-priority: false
   protocols:
     p1:
       id: dubbo1
@@ -19,3 +24,4 @@ dubbo:
       name: dubbo
       port: 20882
       host: 0.0.0.0
+
